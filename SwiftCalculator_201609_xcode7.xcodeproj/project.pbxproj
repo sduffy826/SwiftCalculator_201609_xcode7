@@ -12,6 +12,7 @@
 		63FCA3BB1D8C3C9D00EA2834 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FCA3B91D8C3C9D00EA2834 /* Main.storyboard */; };
 		63FCA3BD1D8C3C9D00EA2834 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63FCA3BC1D8C3C9D00EA2834 /* Assets.xcassets */; };
 		63FCA3C01D8C3C9D00EA2834 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63FCA3BE1D8C3C9D00EA2834 /* LaunchScreen.storyboard */; };
+		63FCA3C91D8C66CE00EA2834 /* CalculatorBrain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63FCA3C81D8C66CE00EA2834 /* CalculatorBrain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		63FCA3BC1D8C3C9D00EA2834 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63FCA3BF1D8C3C9D00EA2834 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63FCA3C11D8C3C9D00EA2834 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		63FCA3C81D8C66CE00EA2834 /* CalculatorBrain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorBrain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +56,23 @@
 		63FCA3B41D8C3C9D00EA2834 /* SwiftCalculator_201609_xcode7 */ = {
 			isa = PBXGroup;
 			children = (
-				63FCA3B51D8C3C9D00EA2834 /* AppDelegate.swift */,
 				63FCA3B71D8C3C9D00EA2834 /* ViewController.swift */,
 				63FCA3B91D8C3C9D00EA2834 /* Main.storyboard */,
+				63FCA3C71D8C3CC400EA2834 /* Supporting Files */,
+				63FCA3C81D8C66CE00EA2834 /* CalculatorBrain.swift */,
+			);
+			path = SwiftCalculator_201609_xcode7;
+			sourceTree = "<group>";
+		};
+		63FCA3C71D8C3CC400EA2834 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				63FCA3B51D8C3C9D00EA2834 /* AppDelegate.swift */,
 				63FCA3BC1D8C3C9D00EA2834 /* Assets.xcassets */,
 				63FCA3BE1D8C3C9D00EA2834 /* LaunchScreen.storyboard */,
 				63FCA3C11D8C3C9D00EA2834 /* Info.plist */,
 			);
-			path = SwiftCalculator_201609_xcode7;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -96,6 +107,7 @@
 				TargetAttributes = {
 					63FCA3B11D8C3C9D00EA2834 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = DKPW85FBXF;
 					};
 				};
 			};
@@ -135,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				63FCA3C91D8C66CE00EA2834 /* CalculatorBrain.swift in Sources */,
 				63FCA3B81D8C3C9D00EA2834 /* ViewController.swift in Sources */,
 				63FCA3B61D8C3C9D00EA2834 /* AppDelegate.swift in Sources */,
 			);
@@ -251,6 +264,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SwiftCalculator_201609_xcode7/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.corti.sean.SwiftCalculator-201609-xcode7";
@@ -262,6 +276,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = SwiftCalculator_201609_xcode7/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.corti.sean.SwiftCalculator-201609-xcode7";
