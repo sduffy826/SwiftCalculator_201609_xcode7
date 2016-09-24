@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak private var display: UILabel!
     
+    @IBOutlet weak var descript: UILabel!
+    
     // This computed value makes it easy to use the
     // 'display'
     private var displayValue: Double {
@@ -27,6 +29,10 @@ class ViewController: UIViewController {
     // Object for the model of our calculator
     private let brain = CalculatorBrain()
     
+    private func descriptValue() {
+        descript.text = brain.descript +
+             ( brain.isPartialResult ? "..." : "" )
+    }
     
     @IBAction private func operatorPressed(sender: UIButton) {
         if let operatorValue = sender.currentTitle {
@@ -39,9 +45,16 @@ class ViewController: UIViewController {
             
             brain.performOperation(operatorValue)
             displayValue = brain.result
+            descriptValue()
         }
     }
 
+    @IBAction func clrPressed() {
+        displayValue = 0
+        userInMiddleOfTypeANumber = false
+        brain.clear()
+    }
+    
     @IBAction func decimalPointPressed(sender: UIButton) {
         if userInMiddleOfTypeANumber {
             if display.text!.containsString(".") == false {

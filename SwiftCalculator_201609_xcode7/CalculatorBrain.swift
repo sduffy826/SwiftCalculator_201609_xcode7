@@ -17,6 +17,25 @@ func add(op1: Double, op2: Double) -> Double {
 class CalculatorBrain {
     private var accumulator = 0.0
     private var pending: PendingBinaryOperationInfo?
+    private var description = ""
+    
+    // Computed property to show that pending operation exists
+    var isPartialResult: Bool {
+        get {
+            return pending != nil
+        }
+    }
+    private var accumulatorString: String {
+        get { return String(accumulator) }
+    }
+    var descript: String {
+        get { return description }
+    }
+    
+    internal func clear() {
+      accumulator = 0.0
+      description = ""
+    }
     
     private var operations: Dictionary<String, Operation> = [
         // You need to provide the associated value to the enum case
@@ -27,7 +46,9 @@ class CalculatorBrain {
         "√" : Operation.UnaryOperation(sqrt),
         
         // Show using closure for next two :)
+        "x²" : Operation.UnaryOperation({ $0 * $0 }),
         "≪" : Operation.UnaryOperation({ $0 * 2 }), // shift left is mult by 2
+        "≫" : Operation.UnaryOperation({ $0 / 2 }),
         "±" : Operation.UnaryOperation({ -$0 }),
         
         "sin" : Operation.UnaryOperation(sin),
@@ -71,6 +92,7 @@ class CalculatorBrain {
     // Used to set the current accumulator value (needed in controller)
     func setOperand(operand: Double) {
         accumulator = operand
+        description += accumulatorString
     }
     
     // This function executes the operation the user requested
@@ -85,22 +107,26 @@ class CalculatorBrain {
             // Use (let xxx) to get the associated value
             case .Constant(let value) :
                 accumulator = value
+                description = accumulatorString
             
             // Set the accumulator to the value from the
             // function call with the current accumulator
             case .UnaryOperation(let function) :
-                accumulator = function(accumulator)
+                description = symbol + "(" + description + ")"
+                accumulator = function(accumulator)              
                 
             // Set pending struct to be function and the current
             // accumulator value
             case .BinaryOperation(let function) :
                 executePendingBinaryOperation()
                 pending = PendingBinaryOperationInfo(binaryFunction: function, firstOperand: accumulator)
+                description += symbol
                 
             // If a pending operation exists then we'll call
             // it passing in the old accumulator value and the
             // new one
             case .Equals :
+                description += "="
                 executePendingBinaryOperation()
             }
         }
@@ -112,6 +138,7 @@ class CalculatorBrain {
         if pending != nil {
             accumulator = pending!.binaryFunction(pending!.firstOperand, accumulator)
             pending = nil
+           
         }
     }
     
