@@ -35,6 +35,7 @@ class CalculatorBrain {
     internal func clear() {
       accumulator = 0.0
       description = ""
+      pending = nil
     }
     
     private var operations: Dictionary<String, Operation> = [
