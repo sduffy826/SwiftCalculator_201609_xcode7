@@ -34,6 +34,20 @@ class ViewController: UIViewController {
              ( brain.isPartialResult ? "..." : "" )
     }
     
+    // Set variable in brains memory to be whats
+    // in the display
+    @IBAction func setMemory(sender: UIButton) {
+        brain.setVariable("M",value: displayValue)
+        userInMiddleOfTypeANumber = false
+        displayValue = brain.result
+    }
+    
+    // Need to add logic for when M is pressed
+    @IBAction func getMemory(sender: UIButton) {
+        brain.setOperand("M")
+        displayValue = brain.result
+    }
+    
     @IBAction private func operatorPressed(sender: UIButton) {
         if let operatorValue = sender.currentTitle {
             // If user typing a number then set accumulator
