@@ -37,7 +37,7 @@ class ViewController: UIViewController {
     // Set variable in brains memory to be whats
     // in the display
     @IBAction func setMemory(sender: UIButton) {
-        brain.setVariable("M",value: displayValue)
+        brain.setVariable("M", value: displayValue)
         userInMiddleOfTypeANumber = false
         displayValue = brain.result
     }

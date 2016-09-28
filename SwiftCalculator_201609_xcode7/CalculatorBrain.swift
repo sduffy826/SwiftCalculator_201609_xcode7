@@ -112,6 +112,7 @@ class CalculatorBrain {
     // Sets variable to value (both args passed in
     func setVariable(variableName: String, value: Double) {
         variableValues[variableName] = value
+        reCompute()
     }
     
     // This function executes the operation the user requested
