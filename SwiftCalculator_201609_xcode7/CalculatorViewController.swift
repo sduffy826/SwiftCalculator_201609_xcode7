@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  CalculatorViewController.swift
 //  SwiftCalculator_201609_xcode7
 //
 //  Created by Sean Regular on 9/16/16.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class CalculatorViewController: UIViewController {
     private var userInMiddleOfTypeANumber = false
     
     // This computed value makes it easy to use the
@@ -102,6 +102,26 @@ class ViewController: UIViewController {
             userInMiddleOfTypeANumber = true
         }
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        var destinationVC = segue.destinationViewController
+        if let navigationVC = destinationVC as? UINavigationController {
+            // If the dest vc is a navigation controller then get the
+            // controller within it... this is typical :)
+            destinationVC = navigationVC.visibleViewController ?? destinationVC
+        }
+        if let graphVC = destinationVC as? GraphViewController {
+            if let sequeIdentifier = segue.identifier {
+                if sequeIdentifier == "graphit" {
+                    graphVC.navigationItem.title = brain.descript
+                    graphVC.test(displayValue)
+                }
+            }
+        }
+    }
+
 
 }
 
